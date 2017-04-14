@@ -1,0 +1,479 @@
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+
+      <!--Import materialize.css-->
+
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection">
+
+      <link rel="stylesheet" type="text/css" href="lib/sweet-alert.css">
+
+      <style type="text/css">
+
+      .top{
+
+        width: 100%;
+
+        height:20%;
+
+        position:relative;
+
+      }
+
+
+
+      .card_overlay{
+
+      
+
+        padding-top:2%;
+
+        width: 100%;
+
+      }
+
+      .back{
+
+        position: absolute;
+
+        top:78%;
+
+        right:3%;
+
+      }
+
+      html
+
+      {
+
+      	overflow-y: hidden; 
+
+      }
+
+      </style>
+
+    
+
+    </head>
+
+    <body>
+
+      <div class="hide-on-large-only"><h2>PLEASE VIEW IN DESKTOP MODE</h2></div>
+
+<div class="hide-on-med-and-down">
+              
+
+    <div class="top teal darken-3 ">
+
+      <div class=" card_overlay">
+
+      <div class="row">
+      <a href="" class="btn-floating red" style="position:absolute;left:90%;top:90%;"><i class="fa fa-chevron-left"></i></a>
+        <div class="col offset-m1 offset-l1 m10 l10">
+        
+         <div class="card-panel row blue-grey lighten-5">        
+<div class="col m2 l2">
+
+                              <h4>SCORE</h4>
+
+                <h5 style="color: red;" id="p1" >Radiant : 0</h5>
+
+                <h5 style="color: #03A9F4;" id="p2">Dire : 0</h5>
+
+                <br>                
+
+            </div>
+
+
+
+              <div class="col m7 l7 s12 "><canvas id="myCanvas" width="576" height="576" align="center" ></canvas>
+
+              </div>
+              <div class="col m3 l3">
+
+
+
+
+        
+           <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+          <button class="waves-effect waves-light btn " value=" Start" onclick="start()">Start Match</button>
+          <button class="waves-effect waves-light btn " value="Playpause" onclick="playpause()">Play/pause</button>
+          <!-- <div class = "col m8 l8"> -->
+          <input type="range" id="slider" onclick="speedChange()" name="GameSpeed" min="50" max="2000" required />
+          <!-- </div> -->
+          
+          <button class="waves-effect waves-light btn " value="previous" onclick="previous()">Prev</button>
+          <button class="waves-effect waves-light btn " value="Next" onclick="next()">Next</button>
+          
+          <h5>LOG</h5>
+          <textarea id="logdisplay" readonly="readonly" class="materialize-textarea"></textarea>
+          </div>
+            
+          </div>
+
+
+
+
+          </div>
+
+        </div>
+
+           </div>
+
+          <div id = "log" style = "display:none;">m.1.16.0.15.1.#.#.1.0 m.2.8.19.8.18.#.#.1.1 m.1.15.1.14.1.16.2.3.1 m.2.8.18.7.18.9.19.3.3 m.1.16.2.15.2.17.1.5.3 m.2.9.19.10.19.8.19.5.4 m.1.14.1.14.0.13.0.7.4 m.2.10.19.11.19.9.18.7.6 m.1.17.1.18.2.18.1.9.6 m.2.11.19.10.18.12.18.9.8 m.1.13.0.12.0.12.1.11.8 m.2.12.18.13.18.12.17.11.10 m.1.12.0.11.1.12.1.13.10 m.2.7.18.7.17.6.18.13.12 m.1.18.2.17.2.19.2.15.12 m.2.12.17.12.16.11.17.15.14 m.1.11.1.11.0.10.0.17.14 m.2.6.18.6.17.5.17.17.16 m.1.19.2.19.1.19.3.19.16 m.2.12.16.11.15.12.15.19.18 m.1.19.3.18.4.18.2.20.18 m.2.9.18.10.17.8.19.20.19 m.1.10.0.10.1.11.0.22.19 m.2.12.15.11.15.13.14.22.21 m.1.10.1.11.0.11.2.24.21 m.2.5.17.6.17.5.18.24.23 m.1.11.0.12.1.12.0.25.23 m.2.13.14.12.14.14.13.25.25 m.1.11.2.10.2.10.3.27.25 m.2.14.13.14.14.15.12.27.27 m.1.14.0.13.1.15.1.28.27 m.2.5.18.6.19.6.18.28.28 m.1.18.4.18.5.19.4.30.28 m.2.6.19.7.19.6.18.30.29 m.1.10.2.10.3.10.1.31.29 m.2.15.12.16.13.16.11.31.31 m.1.12.1.11.2.12.2.32.31 m.2.6.17.5.16.7.16.32.33 m.1.18.5.17.6.19.5.34.33 m.2.7.19.7.18.8.19.34.33 m.1.13.1.12.0.12.2.35.33 m.2.10.18.11.17.9.19.35.34 m.1.18.1.19.0.19.2.36.34 m.2.13.18.13.17.14.17.36.36 m.1.10.3.11.3.10.4.38.36 m.2.7.17.6.16.8.18.38.37 m.1.19.0.18.0.19.1.40.37 m.2.16.11.15.10.15.11.40.39 m.1.17.6.18.7.17.7.42.39 m.2.10.17.10.18.10.16.42.40 m.1.19.5.18.6.18.4.43.40 m.2.16.13.17.12.16.14.43.42 m.1.19.4.18.3.19.5.44.42 m.2.15.10.14.11.14.10.44.44 m.1.18.0.19.1.18.1.45.44 m.2.17.12.16.11.17.11.45.45 m.1.10.4.11.3.10.5.47.45 m.2.11.17.12.16.10.17.47.45 m.1.18.7.18.6.19.7.49.45 m.2.14.10.13.10.13.11.49.47 m.1.19.7.18.6.19.6.51.47 m.2.5.16.4.16.5.17.51.48 m.1.19.6.19.5.18.6.52.48 m.2.4.16.5.17.3.17.52.49 m.1.17.7.16.6.18.8.54.49 m.2.3.17.2.18.3.18.54.51 m.1.18.8.19.8.18.7.55.51 m.2.13.10.12.11.12.9.55.53 m.1.19.8.19.9.19.7.56.53 m.2.2.18.3.18.1.18.56.55 m.1.19.1.18.2.18.1.56.55 m.2.1.18.0.17.0.18.56.57 m.1.19.9.18.10.19.10.58.57 m.2.17.11.16.11.18.10.58.58 t.1.#.#.18.10.58.58 m.2.12.9.11.9.13.8.58.60 m.1.12.2.11.1.11.2.58.60 m.2.0.18.1.17.0.19.58.62 m.1.19.10.18.11.18.9.60.62 m.2.0.19.1.18.1.19.60.63 m.1.18.11.18.12.17.12.61.63 m.2.18.10.17.11.17.10.61.64 m.1.18.12.19.13.18.13.63.64 m.2.1.19.2.18.0.18.63.64 m.1.19.13.18.13.18.14.65.64 m.2.13.8.12.8.14.9.65.66 m.1.18.14.17.13.19.15.67.66 m.2.17.10.18.11.16.10.67.67 m.1.19.15.19.16.19.14.69.67 m.2.12.8.13.9.11.9.69.69 m.1.19.16.18.16.18.15.71.69 m.2.16.10.16.9.16.11.71.70 m.1.15.2.15.1.15.3.72.70 m.2.16.9.17.10.15.9.72.71 m.1.10.5.9.6.11.5.74.71 m.2.3.18.4.17.2.19.74.73 m.1.9.6.8.5.8.6.76.73 m.2.0.17.1.16.1.17.76.75 m.1.8.5.7.5.8.4.78.75 m.2.2.19.1.18.1.19.78.75 m.1.18.16.17.17.19.17.80.75 m.2.1.17.0.16.1.16.80.77 m.1.17.2.18.3.16.3.82.77 m.2.4.17.3.16.3.17.82.78 m.1.19.17.18.17.19.16.83.78 m.2.15.9.14.9.16.8.83.80 m.1.18.17.18.18.19.18.85.80 m.2.13.17.12.16.13.16.85.81 m.1.19.18.18.18.18.19.87.81 m.2.16.8.17.8.16.9.87.82 m.1.18.19.18.18.17.19.89.82 m.2.17.8.16.7.17.7.89.83 m.1.19.14.18.14.19.13.89.83 m.2.16.7.15.8.15.6.89.85 m.1.18.18.19.17.17.19.90.85 m.2.15.6.14.5.14.6.90.87 m.1.18.15.17.15.17.16.92.87 m.2.14.17.14.16.15.17.92.89 m.1.7.5.8.6.6.4.94.89 m.2.14.5.13.6.13.4.94.91 m.1.11.3.12.2.12.4.95.91 m.2.0.16.0.17.0.15.95.92 m.1.6.4.5.5.7.4.97.92 m.2.13.4.12.3.13.3.97.94 m.1.15.3.16.3.14.2.99.94 m.2.15.17.16.16.16.17.99.96 m.1.17.19.16.18.17.18.101.96 m.2.16.17.17.18.17.16.101.98 t.1.17.18.18.9.101.98 m.2.16.14.17.14.16.15.101.100 m.1.16.18.15.18.17.17.103.100 m.2.17.14.18.14.17.15.103.101 t.1.17.18.17.4.103.101 m.2.0.15.0.14.1.14.103.103 m.1.14.2.15.1.15.2.103.103 m.2.0.14.1.13.1.15.103.105 m.1.18.13.17.14.17.13.104.105 m.2.17.18.17.17.16.17.104.106 t.1.17.17.17.4.104.106 m.2.1.16.0.15.1.15.104.107 m.1.16.3.17.4.17.3.106.107 m.2.17.15.17.16.16.14.106.108 m.1.15.18.15.19.16.17.107.108 m.2.17.16.18.17.17.17.107.109 m.1.5.5.6.5.4.5.109.109 m.2.13.3.14.3.12.2.109.110 m.1.4.5.3.4.3.5.111.110 m.2.17.17.18.17.18.18.111.110 m.1.17.3.16.4.16.2.112.110 m.2.14.3.15.4.15.2.112.111 m.1.3.4.3.5.2.4.114.111 m.2.12.3.12.2.11.4.114.112 m.1.15.19.14.19.14.18.116.112 m.2.15.4.16.4.15.3.116.113 t.1.16.4.17.4.116.113 m.2.16.15.15.16.15.14.116.115 m.1.18.9.19.9.17.8.116.115 m.2.3.16.3.17.2.17.116.116 m.1.18.6.17.5.18.5.117.116 m.2.16.4.16.3.15.4.117.116 m.1.14.19.13.19.14.18.119.116 m.2.2.17.1.18.1.17.119.116 m.1.18.3.17.4.17.3.120.116 m.2.11.4.12.5.10.4.120.117 m.1.13.19.14.18.12.18.121.117 m.2.6.16.7.15.5.17.121.118 m.1.17.13.17.12.16.12.122.118 m.2.7.16.6.15.7.17.122.119 m.1.17.5.16.5.17.6.123.119 m.2.12.5.11.5.13.6.123.121 t.1.11.5.17.4.123.121 m.2.14.6.13.7.13.5.123.123 m.1.17.4.16.4.17.5.123.123 m.2.16.16.15.16.16.17.123.124 m.1.16.12.15.12.15.11.124.124 t.2.11.14.15.11.124.124 m.1.14.18.14.17.13.18.124.124 m.2.15.8.16.8.14.8.124.125 m.1.15.11.14.12.15.10.125.125 m.2.13.5.13.6.14.4.125.127 m.1.2.4.3.3.1.3.127.127 m.2.10.16.10.15.11.15.127.129 m.1.16.6.17.5.15.7.128.129 m.2.1.15.2.16.2.14.128.131 m.1.16.5.15.4.15.5.129.131 m.2.15.14.14.15.14.13.129.132 m.1.14.12.15.12.13.13.130.132 m.2.1.14.1.13.2.13.130.134 m.1.15.7.15.6.14.6.130.134 m.2.15.16.14.15.14.16.130.136 m.1.13.13.12.12.14.14.132.136 t.2.11.14.14.14.132.136 m.1.1.3.0.3.2.3.134.136 m.2.2.16.2.17.1.16.134.136 m.1.14.14.15.15.15.13.136.136 m.2.1.13.0.13.2.12.136.138 m.1.15.15.14.16.16.15.137.138 t.2.14.16.14.14.137.138 m.1.0.3.0.2.1.2.139.138 m.2.0.13.0.12.1.12.139.140 m.1.15.13.14.12.14.13.139.140 m.2.13.16.14.15.14.17.139.141 m.1.0.2.1.3.0.1.140.141 m.2.14.4.13.3.15.4.140.141 m.1.0.1.0.0.1.2.142.141 m.2.14.8.15.9.13.7.142.142 m.1.0.0.1.1.1.0.144.142 m.2.14.9.13.9.13.10.144.143 m.1.1.0.0.1.2.0.145.143 m.2.0.12.1.13.1.12.145.144 m.1.2.0.3.0.1.1.147.144 m.2.11.5.11.6.12.6.147.146 m.1.1.1.2.2.0.1.148.146 m.2.13.6.13.7.12.7.148.148 m.1.14.16.15.17.15.15.148.148 m.2.6.15.7.14.5.15.148.150 m.1.3.0.4.1.3.1.150.150 m.2.1.12.2.13.0.11.150.152 m.1.3.1.2.1.2.0.151.152 m.2.0.11.0.10.1.11.151.154 m.1.1.2.1.1.0.2.151.154 m.2.14.11.13.12.15.12.151.155 m.1.15.5.16.6.15.6.151.155 m.2.14.15.13.14.14.14.151.155 m.1.12.12.11.11.12.11.153.155 t.2.14.16.12.11.153.155 m.1.2.1.1.1.3.0.153.155 m.2.12.6.13.7.11.7.153.157 m.1.4.1.4.2.5.1.155.157 m.2.5.15.6.14.5.14.155.159 m.1.5.1.5.0.6.0.157.159 m.2.11.6.11.7.12.6.157.160 m.1.5.0.4.0.6.1.159.160 m.2.13.7.12.7.14.7.159.162 m.1.4.0.5.1.3.0.159.162 m.2.14.7.15.7.15.6.159.162 m.1.12.11.12.12.11.11.160.162 m.2.0.10.1.9.0.9.160.164 m.1.2.2.2.3.3.1.161.164 m.2.0.9.1.9.1.10.161.166 m.1.2.3.1.4.3.2.163.166 m.2.13.9.13.10.13.8.163.166 m.1.6.0.5.0.7.0.164.166 m.2.1.11.0.12.2.11.164.167 m.1.1.4.2.5.1.3.165.167 m.2.13.11.14.11.12.11.165.167 m.1.7.0.7.1.8.1.167.167 m.2.7.15.8.14.8.16.167.169 m.1.6.1.7.2.5.2.169.169 m.2.12.7.12.6.11.7.169.170 m.1.7.1.8.0.8.2.171.170 m.2.11.7.12.8.10.8.171.171 m.1.12.4.11.4.13.3.171.171 m.2.13.12.12.12.14.13.171.171 m.1.8.0.9.0.7.0.172.171 m.2.12.14.12.13.11.13.172.173 m.1.11.11.11.12.10.10.174.173 m.2.10.8.10.7.11.9.174.175 m.1.11.12.12.11.12.13.175.175 t.2.14.16.12.13.175.175 m.1.9.0.9.1.10.1.176.175 m.2.11.9.11.8.10.9.176.177 m.1.12.13.13.12.13.13.176.177 m.2.8.16.9.17.8.17.176.179 m.1.8.1.7.1.8.0.176.179 m.2.8.17.9.18.7.17.176.179 m.1.2.5.1.6.2.4.177.179 m.2.11.8.10.9.12.8.177.180 m.1.9.1.9.2.8.2.179.180 m.2.1.10.1.11.1.9.179.181 m.1.10.10.9.10.10.11.181.181 m.2.1.9.2.10.2.8.181.183 m.1.1.6.2.6.0.5.183.183 m.2.2.14.2.13.3.15.183.185 m.1.10.11.9.12.11.12.184.185 m.2.2.13.3.13.2.12.184.187 m.1.3.2.2.1.3.3.185.187 m.2.9.17.8.17.10.17.185.187 m.1.9.12.10.12.8.12.187.187 m.2.11.13.10.13.11.14.187.189 m.1.10.12.9.13.11.11.188.189 m.2.10.7.9.6.9.8.188.190 m.1.9.13.9.12.9.14.189.190 m.2.9.8.8.8.10.9.189.192 m.1.0.5.1.4.0.4.190.192 m.2.11.14.12.13.10.14.190.193 m.1.9.14.10.13.8.14.192.193 t.2.10.13.12.13.192.193 m.1.4.2.4.3.3.1.193.193 m.2.8.8.7.7.8.9.193.195 m.1.5.2.5.3.5.1.194.195 m.2.7.7.8.7.8.6.194.197 t.1.10.6.8.13.194.197 m.2.2.8.3.7.2.7.194.199 m.1.8.14.7.13.8.15.196.199 m.2.11.15.12.14.10.15.196.200 m.1.10.13.9.13.9.12.196.200 m.2.10.9.10.8.9.10.196.201 t.1.10.6.9.9.196.201 m.2.8.6.8.5.7.6.196.202 m.1.8.15.8.16.9.14.196.202 m.2.3.15.2.15.2.16.196.203 m.1.7.2.6.2.6.3.198.203 m.2.2.15.2.16.1.14.198.203 m.1.9.2.10.3.9.3.199.203 m.2.7.6.6.5.7.5.199.204 t.1.6.5.9.9.199.204 m.2.8.7.9.8.8.6.199.204 m.1.0.4.0.3.1.4.199.204 m.2.2.12.3.13.3.11.199.206 m.1.7.13.6.13.6.14.201.206 t.2.6.14.6.14.201.206 m.1.2.6.1.5.3.7.203.206 t.2.6.14.3.7.203.206 m.1.9.3.10.2.8.2.204.206 m.2.2.11.1.12.3.10.204.207 m.1.8.12.9.13.7.12.205.207 m.2.2.10.3.10.1.11.205.208 m.1.8.4.9.5.8.3.207.208 m.2.10.14.10.15.9.15.207.210 m.1.9.5.10.5.10.4.207.210 m.2.10.15.9.15.9.16.207.212 m.1.8.3.7.3.7.2.208.212 m.2.6.5.7.5.7.6.208.212 m.1.6.2.7.1.5.1.208.212 m.2.2.7.2.6.1.7.208.213 m.1.8.2.9.2.8.1.208.213 m.2.9.10.10.11.10.9.208.213 m.1.7.12.7.11.6.13.210.213 m.2.1.7.0.6.2.8.210.214 m.1.7.11.6.11.6.12.212.214 m.2.0.6.1.5.1.6.212.215 t.1.1.5.3.7.212.215 m.2.3.13.3.14.4.13.212.217 m.1.3.3.2.3.4.3.213.217 m.2.9.15.8.14.9.14.213.217 m.1.4.3.5.3.3.2.214.217 m.2.1.5.1.6.0.4.214.217 m.1.5.3.4.4.6.4.215.217 m.2.3.14.4.14.2.15.215.218 m.1.3.5.3.6.4.6.217.218 m.2.3.11.2.10.4.11.217.219 m.1.6.3.5.3.6.2.217.219 m.2.9.16.8.15.10.16.217.219 m.1.7.4.7.5.8.5.217.219 m.2.8.9.7.9.9.10.217.220 m.1.7.3.8.4.8.2.217.220 m.2.7.9.7.8.8.10.217.222 m.1.3.6.4.5.4.6.218.222 m.2.4.14.4.15.4.13.218.224 m.1.4.4.3.4.3.3.218.224 m.2.3.10.3.9.3.11.218.225 m.1.4.6.3.7.5.6.220.225 m.2.7.8.6.8.6.7.220.227 m.1.3.7.3.6.4.7.221.227 m.2.3.9.3.8.2.8.221.228 m.1.6.14.7.15.6.15.221.228 m.2.4.15.5.14.5.15.221.229 m.1.6.13.5.14.6.12.223.229 t.2.5.14.3.7.223.229 m.1.5.6.5.5.6.7.224.229 t.2.5.14.6.7.224.229 m.1.4.7.3.6.5.6.224.229 m.2.3.8.4.7.4.8.224.230 m.1.6.12.7.12.5.13.225.230 m.2.4.13.4.12.3.12.225.232 m.1.6.7.5.8.5.6.226.232 m.2.7.14.7.13.8.13.226.233 m.1.5.8.5.7.4.9.228.233 m.2.6.8.6.7.6.9.228.234 m.1.5.7.4.6.6.6.229.234 m.2.4.8.5.9.5.7.229.235 m.1.6.6.5.6.7.6.229.235 m.2.6.9.5.10.5.9.229.237 m.1.4.9.3.8.3.10.229.237 m.2.8.10.7.10.9.10.229.238 m.1.6.11.5.11.5.10.231.238 t.2.5.14.5.10.231.238 m.1.5.14.6.15.6.13.231.238 m.2.3.12.3.13.4.11.231.239 m.1.5.10.6.10.4.10.233.239 m.2.4.12.3.12.5.12.233.240 m.1.5.13.6.14.4.12.233.240 m.2.4.11.4.10.3.10.233.241 t.1.4.10.5.10.233.241 m.2.8.13.8.12.9.13.233.241 m.1.5.11.5.10.5.12.234.241 t.2.4.9.5.12.234.241 m.1.6.10.6.11.7.11.234.241 m.2.7.10.7.11.6.9.234.241 m.2.5.7.4.6.6.6.234.241 w.2</div>
+    
+
+
+
+      <!--Import jQuery before materialize.js-->
+
+      
+
+      <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+
+      <script type ="text/javascript" src="lib/sweet-alert.min.js"></script>
+
+
+
+       <script type="text/javascript" src="js/getmousestuff.js"></script>
+
+       <script type="text/javascript" src="js/jscode2.js"></script>
+
+       <script>
+       var sc1=0,sc2=0;
+       var logg="";
+function writelog(){
+
+}
+
+function updatescore(score1,score2){
+
+document.getElementById('p1').innerHTML = "Radiant : "+score1;
+
+document.getElementById('p2').innerHTML = "Dire : "+score2;
+
+}
+
+
+function loggenrator(move){     
+      document.getElementById("logdisplay").value=move;
+      document.getElementById("logdisplay").scrollTop = document.getElementById("log").scrollHeight;
+}
+
+
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var k=0;
+var interval;
+var l=0;
+var ppflag=0;
+var sflag=0;
+var iterator = 0;
+var speed = 500;
+var prevflag = 0;
+var logfile = document.getElementById("log").textContent;
+    var moves = logfile.split(" ");
+    var err,flag=0;
+    //document.getElementById("splits").innerHTML = res
+   for (var i =0; i < moves.length; i++) {
+      console.log(moves[i]);
+   }
+   i=0;
+  // var temp;
+
+function drawbox(){
+
+    for(j = 0 ; j < 20 ; j++){
+    k=0;
+             for (i = 0; i < 20; i++) {
+                 
+                ctx.fillStyle = "#3f3f3b";
+                ctx.fillRect(k,l,6,6);
+                ctx.fill();
+               
+                k=k+30;
+            }
+            l=l+30;
+    }
+
+}
+function next()
+{
+    if(sflag==1)
+    {
+            clearInterval(interval);
+            ppflag=1;
+            if(iterator<moves.length && flag==0)
+            {
+                thisistherealshit(moves);
+                console.log(iterator,"this is an iterator");
+                iterator++;
+
+            }
+            else
+            {
+                alert("Next move Not Available");
+            }
+    }
+    else
+    {
+        toast("First Start The Game",2000);
+    }
+}
+function previous()
+{
+        
+    if(sflag==1)
+    {
+            clearInterval(interval);
+            ppflag=1;
+            while(iterator>=moves.length-1)
+                iterator--;
+            if(iterator!=0)
+            {
+
+                     iterator--;
+                
+                prevflag=1;
+                if(iterator<moves.length)
+                {
+                    flag=0;
+                    if(iterator<moves.length && flag==0){
+                        thisistherealshit(moves);
+                        console.log(iterator,"this is an iterator");
+                         iterator++;
+                     }
+
+                }
+
+                    prevflag=0;
+                    iterator--;
+            }
+    }
+    else
+    {
+        toast("First Start The Game",2000);
+    }
+
+}
+function speedChange()
+{
+    if(sflag==1)
+    {
+         clearInterval(interval);
+         speed = document.getElementById("slider").value;
+         interval=setInterval(playgame,speed);
+         ppflag=0;
+    }
+    else
+    {
+        toast("First Start The Game",2000);
+    }
+}
+
+
+function drawline(y1,x1,y2,x2,player){
+    
+                             ctx.beginPath();
+                             ctx.strokeStyle="red";
+                if(parseInt(player)==2){
+                                ctx.strokeStyle="blue";
+                             }
+                             if(prevflag==1){
+                                ctx.strokeStyle="white";
+                                ctx.linewidth="1.5";
+                             }
+                             ctx.moveTo(x1*30+3,y1*30+3);
+                             ctx.lineTo(x2*30+3,y2*30+3);
+                             ctx.stroke();
+                             if(prevflag==1)
+                             {
+                                ctx.fillStyle = "#3f3f3b";
+                                ctx.fillRect(x1*30,y1*30,6,6);
+                                 ctx.fillRect(x2*30,y2*30,6,6);
+                                ctx.fill();                 
+                             }
+}
+function playpause()
+{
+    if(ppflag==0&&sflag==1)
+    {
+        clearInterval(interval);
+        ppflag=1;
+    }
+    else if(ppflag==1&&sflag==1)
+    {
+        interval=setInterval(playgame,speed);
+        ppflag=0;
+    }
+    else
+    {
+        //alert("Start The Game First");
+        toast("First Start The Game",2000);
+    }
+
+}
+
+function thisistherealshit(moves){
+    
+    var splitmove = moves[iterator].split(".");
+    var movetype = splitmove[0];
+    var playerno = splitmove[1];
+    var i1 = splitmove[2];
+    var j1 = splitmove[3];
+    var i2 = splitmove[4];
+    var j2 = splitmove[5];
+
+    if(movetype=='m'){
+        var i3 = splitmove[6];
+        var j3 = splitmove[7];
+        var score1 = splitmove[8];
+        var score2 = splitmove[9];
+
+        if(i3!='#'){
+           drawline(i1,j1,i2,j2,playerno);           
+           drawline(i1,j1,i3,j3,playerno); 
+        }
+        else{
+            drawline(i1,j1,i2,j2,playerno);
+        }
+        sc1=score1;
+        sc2=score2;
+        logg=movetype+"."+playerno+"."+i1+"."+j1+"."+i2+"."+j2+"."+i3+"."+j3;
+    }
+
+    else if(movetype=='t'){
+        var score1 = splitmove[6];        
+        var score2 = splitmove[7];
+        sc1=score1;
+        sc2=score2;
+        logg=movetype+"."+playerno+"."+i1+"."+j1+"."+i2+"."+j2;
+    }
+    else if(movetype=='i'){
+        var error = splitmove[1];
+        var winner = splitmove[2];
+        switch(error)
+          {
+            case '1':
+            swal("Your Bot is consuming more resources than specified","","error");
+            break;
+            case '2':
+            swal("Runtime Error","","error");
+            break;
+            case '3':
+            swal("Output is in illegeal format","","error");
+            break;
+            case '4':
+            swal("Seed was not placed on ground","","error");
+            break;          
+            case '5':
+            swal("Your tree is growing out of range","","error");
+            break;
+            case '6':
+            swal("Your tree didnt grow in adjacent place","","error");
+            break;
+            case '7':
+            swal("Your move is not from active leaf","","error");
+            break;
+            case '8':
+            swal("Your branch is overlapping another branch","","error");
+            break;
+          }
+          
+        //end the loop
+    }
+    else if(movetype == 'w'){
+        var winner = splitmove[1];        
+        console.log(winner,"gg");
+        switch(winner)
+        {
+            case '1':
+            alert("Winner Is Player 1",parseInt(winner));
+            break;
+            case '2':
+            alert("Winner Is Player 2",parseInt(winner));
+            break;
+            case '0':
+            alert("Match Drawn");
+            break;
+        }
+        flag=1;
+    }
+    if(prevflag==1)
+    {
+    	if(iterator!=0)
+    	{
+    		var hide=moves[iterator-1].split(".");
+    		if(hide[0]=='m')
+    		{
+    			sc1=hide[8];
+    			sc2=hide[9];
+    		}
+    		if(hide[0]=='t')
+    		{
+    			sc1=hide[6];
+    			sc2=hide[7];
+    		}
+    	}
+    	else
+    	{
+    		sc1=0;
+    		sc2=0;
+    	}
+    }
+updatescore(sc1,sc2);
+loggenrator(logg);
+
+}
+function playgame(){
+    if(iterator<moves.length && flag==0){
+        thisistherealshit(moves);
+        console.log(iterator,"this is an iterator");
+         iterator++;
+
+    }
+    else{
+          clearInterval(stop);
+    }
+}
+
+function init(){
+
+ctx.clearRect(0,0,c.length,c.width);
+
+
+    //typeofmove.playerno.i1,j1,i2,j2,i3,j3,score1,score2
+
+
+
+
+//var interval = setInterval(iteration(moves,interval,iterator),1000);
+interval = setInterval(playgame,speed);
+}
+function start()
+{
+    init();
+    sflag=1;
+}
+drawbox();
+
+
+
+ </script>
+
+  </div>
+
+  
+
+        <div style="width: 713px;" class="hiddendiv common"></div></body></html>
+
+
+
+
+
+        

@@ -1,0 +1,48 @@
+{% extends 'xodia/test.html' %}
+
+{% block testbutton %}
+{% endblock testbutton %}
+
+
+{% block loadgame %}
+<div class="card darken-1" style="z-index:1;color:teal;">
+              <div class="card-content">
+                <span class="card-title" style="color:teal;"><b>Get match</b></span>
+
+              </div>
+          
+              <div class="card-action">
+
+<form action="{% url 'xodia:getgame' %}" method="post">
+{% csrf_token %}
+   <input class="with-gap" required name="game" type="radio" id="game1" value="game1" />
+   <label for="game1">Test1 vs std</label>
+   <input class="with-gap" required  name="game" type="radio" id="game2" value="game2" />
+   <label for="game2">Test2 vs std</label>
+   <input class="with-gap" required  name="game" type="radio" id="game3" value="game3" />
+   <label for="game3">Test1 vs Test2</label>
+   <input class="btn btn-flat" type="submit" onclick="getgame()" style="color:teal;font-style:italic;" value="Submit" >
+</form> 
+{% csrf_token %}
+</div>
+</div>
+
+{% endblock loadgame %}
+
+
+{% block ready %}
+
+	swal("You have already submitted your final bot. Now sit back and wait for results","","success");
+	var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    var value = "{{acevaluef|escapejs}}";
+    console.log(value);
+    editor.setValue(value);
+
+{% endblock ready %}
+
+{% block msg %}
+Your final submitted code 
+{% endblock msg %}
+
+

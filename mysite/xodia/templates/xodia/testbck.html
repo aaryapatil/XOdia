@@ -1,0 +1,238 @@
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>XOdia</title>
+
+  <!-- CSS  -->  <link href="{% static 'xodia/css/style.css' %}" rel="stylesheet"media="screen,projection">
+  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link href="{% static 'xodia/css/materialize.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'xodia/css/sweetalert2.css' %}">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="{% static 'xodia/images/apple-icon-57x57.png' %}">
+  <link rel="apple-touch-icon" sizes="60x60" href="{% static 'xodia/images/apple-icon-60x60.png' %}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{% static 'xodia/images/apple-icon-72x72.png' %}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'xodia/images/apple-icon-76x76.png' %}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{% static 'xodia/images/apple-icon-114x114.png' %}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{% static 'xodia/images/apple-icon-120x120.png' %}">
+  <link rel="apple-touch-icon" sizes="144x144" href="{% static 'xodia/images/apple-icon-144x144.png' %}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{% static 'xodia/images/apple-icon-152x152.png' %}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'xodia/images/apple-icon-180x180.png' %}">
+  <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'xodia/images/android-icon-192x192.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'xodia/images/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{% static 'xodia/images/favicon-96x96.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'xodia/images/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'xodia/json/manifest.json' %}">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="{% static 'xodia/json/ms-icon-144x144.png' %}">
+  <meta name="theme-color" content="#ffffff">
+
+
+  
+  <style type="text/css" media="screen">
+    p{
+      color: white;
+    }
+  </style>
+
+</head>
+<body style="font-family: 'Lato',sans-serif;background-color:#424242;overflow-x:hidden;" id="body">
+  <nav style="background:transparent;" role="navigation" >
+    <div class="nav-wrapper container center" ><a class="hide-on-large-only" target="blank" id="logo-container" href="http://credenz.info" class="brand-logo"><img src="{% static 'xodia/images/logobrand.png' %}" style="width:100px;"></a>
+    
+
+    
+      <!-- <ul class="right hide-on-med-and-up">
+        <li><a href="#about" class="page-scroll">About</a></li>
+        <li><a href="#contact" class="page-scroll">Contact us</a></li>
+        <li><a href="http://xodia.pythonanywhere.com/xodia/" target="blank">Previous game</a></li>
+      </ul> -->
+         <a id="bulb" target="blank" href="http://credenz.info" class="brand-logo hide-on-med-and-down"><img src="{% static 'xodia/images/logobrand.png' %}" style="width:140px;height:80px;position:fixed;left:0;padding:8px;top:-1%;"></a>
+        <a target="blank" href="http://pictieee.in" class="hide-on-med-and-down"><img style="width:165px;padding:10px;height:70px;position:fixed;right:0;" src="{% static 'xodia/images/logopisb.png' %}"></a> 
+      <ul id="nav-mobile" class="side-nav black " style="color:white;">
+        <li><a href="#index-banner" class="page-scroll" ><img style="width:100px;" src="{% static 'xodia/images/logobrand.png' %}"></a></li>
+        <li><a href="#about"  style="color:white;"class="page-scroll">About</a></li>
+        <li><a href="#gtab"  style="color:white;"class="page-scroll">Grow</a></li>
+        <li><a href="#contact" style="color:white;" class="page-scroll">Register</a></li>
+        <li><a href="#contact" style="color:white;" class="page-scroll" >Contact</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse hide-on-med-and-up"><i class="material-icons">=</i></a>
+    </div>
+  </nav>
+  <div class="row" style="padding-top:0%;">
+  <div class="col l6 s12 m12" style="position:relative;height:400px;">
+    <div class="col l3 s12 m12 center offset-l2"><p style="color:white;position:relative;top:15px;">Test Code goes here</p></div>
+    <div class="col l3 s12 m12 input-field offset-l2">
+    <form action="{% url 'xodia:test' %}" method="post">
+    {% csrf_token %}
+     <select name="lang" onchange="writethis(this);">
+      <option value="c" >Select language &#9660;</option>
+      <option id="c" value="c">C</option>
+      <option id="c++" value="cpp">C++</option>
+      <option id="java" value="java">Java</option>
+      <option id="python" value="python">Python 2.7</option>
+      <option id="python3" value="python3">Python 3.x</option>
+
+    </select>
+
+
+  </div>
+  {% block editor %}
+    <div id="editor" style="position:relative;height:100%;width:100%;">
+    </div>
+  {% endblock editor %}
+
+    <input type="hidden" name="code" id="code" />
+
+  </div>
+
+{% block testbutton %}
+  <div class="col l6 s12 m12 center" style="position:relative;height:500px;">
+    
+    <div class="card darken-1" style="z-index:1;color:teal;">
+              <div class="card-content">
+                <span class="card-title" style="color:teal;"><b>Submit</b></span>
+
+              </div>
+              <div class="card-action">
+              
+    
+      <input class="with-gap" name="test_no" type="radio" id="test1" value="1" />
+      <label for="test1">Test 1</label>
+    
+      <input class="with-gap" name="test_no" type="radio" id="test2" value="2" />
+      <label for="test2">Test 2</label>
+
+    
+                <input class="btn btn-flat" id = "submit" type="submit" style="color:teal;font-style:italic;" value="Submit > ">
+                </form>
+
+                
+              </div>
+            </div>
+{% endblock testbutton %}
+
+
+{% block loadgame %}
+        
+              
+               
+          
+             
+{% endblock loadgame %}
+          <div class="card darken-1" style="z-index:1;color:teal;">
+
+              <div class="card-content">
+                <a class="waves-effect waves-light btn" href="{% static 'xodia/pdf/Grow_Documentation.pdf' %}" target="blank" style="color:white;">DOCUMENTATION <i class="fa fa-book"></i></a>
+                <a class="waves-effect waves-light btn" href="grow" target="blank" style="color:white;">Playable UI <i class="fa fa-gamepad"></i></a>
+
+              </div>
+            </div>
+
+
+
+
+  </div>
+  <div class="col l12 s12 m12" style="position:absolute;bottom:0%;width:100%;  color:white;">
+    <p style="position:relative;bottom:-10px;"  >Console</p>
+    <textarea></textarea>
+
+
+  </div>
+
+    </div>
+
+
+
+<script src="{% static 'xodia/js/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'xodia/js/jquery-2.1.3.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'xodia/js/materialize.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'xodia/js/init.js' %}" type="text/javascript"> </script>
+<script src="{% static 'xodia/js/sweetalert2.min.js' %}" type="text/javascript"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+
+  var editor = ace.edit("editor");
+  var value1 = "{{acevalue1}}";
+  var value2 = "{{acevalue2}}";
+  
+  if (value1 == "") {value1 = "#include<stdio.h>\nint main()\n{ int i,j,k;\n  char s[3600];\n  scanf(\"%s\",s);\n  char array[20][20][9];\n  for(i=0;i<20;i++)\n    for(j=0;j<20;j++)\n      for(k=0;k<9;k++)\n        array[i][j][k]=s[i*9*20+j*9+k];\n  \n/*\nScan whether \n1. Grid is empty\n2. There is a move played by opponent\nin order to play the first move\nNote: Your code is always given the grid values according to player1.\n  Your code should output just one move and then exit.\n*/\n\n//For Instance:-\n\nfor(i=0;i<20;i++)\n{\n  for(j=0;j<20;j++)\n  {\n\n    int flag=0;\n    if(array[i][j][0]!='0' && array[i][j][0]!='2' && array[i][j][0]!='4')\n      {\n      //play first move\n      printf(\"%d,%d,%d,%d,\",i1,j1,i2,j2);\n        }\n          }\n            }\n\n      \n//Your code logic starts here\n\n//for Subsequent  moves\n  printf(\"%d,%d,%d,%d,%d,%d\",i1,j1,i2,j2,i3,j3);\n  //where (i1,j1) (i2,j2) (i3,j3) are coordinates of the seed and leaves\n\n\n}\n\n\n" } ;
+
+ if (value2 == "") {value2 = "#include<stdio.h>\nint main()\n{ int i,j,k;\n  char s[3600];\n  scanf(\"%s\",s);\n  char array[20][20][9];\n  for(i=0;i<20;i++)\n    for(j=0;j<20;j++)\n      for(k=0;k<9;k++)\n        array[i][j][k]=s[i*9*20+j*9+k];\n  \n/*\nScan whether \n1. Grid is empty\n2. There is a move played by opponent\nin order to play the first move\nNote: Your code is always given the grid values according to player1.\n  Your code should output just one move and then exit.\n*/\n\n//For Instance:-\n\nfor(i=0;i<20;i++)\n{\n  for(j=0;j<20;j++)\n  {\n\n    int flag=0;\n    if(array[i][j][0]!='0' && array[i][j][0]!='2' && array[i][j][0]!='4')\n      {\n      //play first move\n      printf(\"%d,%d,%d,%d,\",i1,j1,i2,j2);\n        }\n          }\n            }\n\n      \n//Your code logic starts here\n\n//for Subsequent  moves\n  printf(\"%d,%d,%d,%d,%d,%d\",i1,j1,i2,j2,i3,j3);\n  //where (i1,j1) (i2,j2) (i3,j3) are coordinates of the seed and leaves\n\n\n}\n\n\n"};
+
+    editor.setTheme("ace/theme/twilight");
+    editor.getSession().setMode("ace/mode/c_cpp");  
+    editor.setValue(value1); 
+      
+   $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin:true // Displays dropdown below the button
+    }
+  );
+   $(document).ready(function() {
+    $('select').material_select();
+
+
+  document.getElementById("code").value = editor.getValue();
+  });
+
+       
+
+});
+</script>
+
+<script type="text/javascript">
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/twilight");
+editor.getSession().setMode("ace/mode/c_cpp");
+      
+function writethis(lang){
+  console.log(lang);
+  switch (lang.value) {
+    case "c":
+        c();
+        break;
+    case "cpp":
+        cpp();
+        break;
+    case "java":
+        java();
+        break;
+    case "python":
+        python();
+        break;
+    case "python3":
+        python();
+        break;
+    
+}
+}
+function c(){
+  editor.getSession().setMode("ace/mode/c_cpp");
+  editor.setValue("#include<stdio.h>\nint main()\n{ int i,j,k;\n  char s[3600];\n  scanf(\"%s\",s);\n  char array[20][20][9];\n  for(i=0;i<20;i++)\n    for(j=0;j<20;j++)\n      for(k=0;k<9;k++)\n        array[i][j][k]=s[i*9*20+j*9+k];\n  \n/*\nScan whether \n1. Grid is empty\n2. There is a move played by opponent\nin order to play the first move\nNote: Your code is always given the grid values according to player1.\n  Your code should output just one move and then exit.\n*/\n\n//For Instance:-\n\nfor(i=0;i<20;i++)\n{\n  for(j=0;j<20;j++)\n  {\n\n    int flag=0;\n    if(array[i][j][0]!='0' && array[i][j][0]!='2' && array[i][j][0]!='4')\n      {\n      //play first move\n      printf(\"%d,%d,%d,%d,\",i1,j1,i2,j2);\n        }\n          }\n            }\n\n      \n//Your code logic starts here\n\n//for Subsequent  moves\n  printf(\"%d,%d,%d,%d,%d,%d\",i1,j1,i2,j2,i3,j3);\n  //where (i1,j1) (i2,j2) (i3,j3) are coordinates of the seed and leaves\n\n\n}\n\n\n");
+
+}
+
+function cpp(){
+  editor.getSession().setMode("ace/mode/c_cpp");
+  editor.setValue("#include<iostream>\nusing namespace std;\nint main()\n{ int i,j,k;\n  char s[3600];\n  cin>>s;\n  char array[20][20][9];\n  for(i=0;i<20;i++)\n    for(j=0;j<20;j++)\n      for(k=0;k<9;k++)\n        array[i][j][k]=s[i*9*20+j*9+k];\n\n  \n  \n/*\nScan whether \n1. Grid is empty\n2. There is a move played by opponent\nin order to play the first move\nNote: Your code is always given the grid values according to player1.\n  Your code should output just one move and then exit.\n*/\n\n//For Instance:-\n\nfor(i=0;i<20;i++)\n{\n  for(j=0;j<20;j++)\n  {\n\n    int flag=0;\n    if(array[i][j][0]!='0' && array[i][j][0]!='2' && array[i][j][0]!='4')\n      {\n      //play first move\n      cout<<i1+\",\"+<<j1+\",\"+i2+\",\"+j2;\n        }\n          }\n            }\n\n      \n//Your code logic starts here\n\n//for Subsequent  moves\n  cout<<i1+\",\"+j1+\",\"+i2+\",\"+j2+\",\"+i3+\",\"+j3;\n  //where (i1,j1) (i2,j2) (i3,j3) are coordinates of the seed and leaves\n\n}");  
+}
+function java(){
+      editor.getSession().setMode("ace/mode/java");
+      editor.setValue("import java.io.*;\nclass temp\n{\n  public static void main(String args[])throws IOException\n  {\n    BufferedReader br=new BufferedReader(new InputStreamReader(System.in));\n    char array[][][]=new char[20][20][9];\n    String s=br.readLine();\n    int i,j,k,i1=0,i2=0,i3=0,j1=0,j2=0,j3=0;\n    for(i=0;i<20;i++)\n    {\n      for(j=0;j<20;j++)\n      {\n        for(k=0;k<9;k++)\n        {\n          array[i][j][k]=s.charAt(i*9*20+j*9+k);\n        }\n      }\n    }\n    \n    //your code to grow\n\n    //for first move\n    System.out.print(i1+\",\"+j1+\",\"+i2+\",\"+j2);\n    //where (i1,j1)(i2,j2) are coordinates of the seed and leaf\n\n    //for the rest of the moves\n    System.out.print(i1+\",\"+j1+\",\"+i2+\",\"+j2+\",\"+i3+\",\"+j3);\n    //where (i1,j2)(i2,j2)(i3,j3) are coordinates of the seed and leaves\n  }\n}\n\n");  
+}
+function python(){
+      editor.getSession().setMode("ace/mode/python");
+      editor.setValue("import textwrap\nstring=str(raw_input())\na=textwrap.wrap(string,9)\narr=[['000000000'for i in range(20)]for j in range(20)]\nfor i in range(20):\n  for j in range(20):\n    arr[i][j]=a[i*20+j]\n\n\n\n'''\nScan whether \n1. Grid is empty\n2. There is a move played by opponent\nin order to play the first move\nNote: Your code is always given the grid values according to player1.\n  Your code should output just one move and then exit.\n'''\n\n#For Instance:-\n\nfor i in range(20):\n  for j in range(20):\n    flag=0\n    if(arr[i][j][0]!='0' and arr[i][j][0]!='2' and arr[i][j][0]!='4'):\n      #play first move\n      print i1+\",\"+j1+\",\"+i2+\",\"+j2\n      \n\n#Your code logic starts here\n\n#for Subsequent  moves\nprint i1+\",\"+j1+\",\"+i2+\",\"+j2+\",\"+i3+\",\"+j3\n#where (i1,j1) (i2,j2) (i3,j3) are coordinates of the seed and leaves\n");  
+}
+
+</script>
+
+</body>

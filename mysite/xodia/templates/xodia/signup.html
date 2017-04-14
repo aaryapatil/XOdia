@@ -1,0 +1,16 @@
+
+<form action ="{% url 'xodia:signup' %}" method = "post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for = "fname">First Name</label>
+    <input type = "text" name = "fname" id = "fname" /><br>
+    <label for = "lname">Last Name</label>
+    <input type = "text" name = "lname" id = "lname" /><br>
+    <label for = "uname">User Name</label>
+    <input type = "text" name = "uname" id = "uname" /><br>
+    <label for = "password">Password</label>
+    <input type = "password" name = "password" id = "password" /><br>
+    <input type = "file" name = 'dp'  /> <br/>
+    <input type = "submit" value = "Sign Up">
+</form>
+{% block already %}  {% endblock %}
+

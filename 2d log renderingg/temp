@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection">
+      <link rel="stylesheet" type="text/css" href="/static/css/sweet-alert.css">
+      <link rel="stylesheet" type="text/css" href="/static/css/custom.css">
+      <link rel="stylesheet" type="text/css" href="/static/css/alertify.css">
+      <link rel="stylesheet" type="text/css" href="/static/css/default.css">
+      <link rel="stylesheet" type="text/css" href="/static/css/core.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    </head>
+    <body class="teal">
+    <div id="log" style="display:none;">0.h.0.0.1.0.0.0.0.0 0.V.1.14.2.0.0.0.0.0 0.v.0.0.1.0.0.0.0.0 0.V.1.0.2.0.0.0.0.0 0.h.1.0.1.0.0.0.0.0 0.v.1.0.1.0.0.1.0.0 0.V.14.14.2.1.0.0.0.0 0.h.0.1.1.1.0.0.0.0 0.H.14.1.2.1.0.0.0.0 0.h.1.1.1.1.0.0.0.0 0.v.2.0.1.1.0.1.0.1 0.V.2.14.2.2.0.0.0.0 0.h.15.1.2.2.0.1.14.1 0.h.0.2.1.2.1.0.0.0 0.V.1.13.2.2.1.0.0.0 0.h.1.2.1.2.1.0.0.0 0.v.3.0.1.2.1.1.0.2 0.V.2.13.2.3.1.0.0.0 0.h.13.1.2.3.1.1.13.1 0.h.0.3.1.3.2.0.0.0 0.V.1.12.2.3.2.0.0.0 0.h.1.3.1.3.2.0.0.0 0.v.4.0.1.3.2.1.0.3 0.V.2.12.2.4.2.0.0.0 0.h.12.1.2.4.2.1.12.1 0.h.0.4.1.4.3.0.0.0 0.V.1.11.2.4.3.0.0.0 0.h.1.4.1.4.3.0.0.0 0.v.5.0.1.4.3.1.0.4 0.V.2.11.2.5.3.0.0.0 0.h.11.1.2.5.3.1.11.1 0.h.0.5.1.5.4.0.0.0 0.V.1.10.2.5.4.0.0.0 0.h.1.5.1.5.4.0.0.0 0.v.6.0.1.5.4.1.0.5 0.V.2.10.2.6.4.0.0.0 0.h.10.1.2.6.4.1.10.1 0.h.0.6.1.6.5.0.0.0 0.V.1.9.2.6.5.0.0.0 0.h.1.6.1.6.5.0.0.0 0.v.7.0.1.6.5.1.0.6 0.V.2.9.2.7.5.0.0.0 0.h.9.1.2.7.5.1.9.1 0.h.0.7.1.7.6.0.0.0 0.V.1.8.2.7.6.0.0.0 0.h.1.7.1.7.6.0.0.0 0.v.8.0.1.7.6.1.0.7 0.V.2.8.2.8.6.0.0.0 0.h.8.1.2.8.6.1.8.1 0.h.0.8.1.8.7.0.0.0 0.V.1.7.2.8.7.0.0.0 0.h.1.8.1.8.7.0.0.0 0.v.9.0.1.8.7.1.0.8 0.V.2.7.2.9.7.0.0.0 0.h.7.1.2.9.7.1.7.1 0.h.0.9.1.9.8.0.0.0 0.V.1.6.2.9.8.0.0.0 0.h.1.9.1.9.8.0.0.0 0.v.10.0.1.9.8.1.0.9 0.V.2.6.2.10.8.0.0.0 0.h.6.1.2.10.8.1.6.1 0.h.0.10.1.10.9.0.0.0 0.V.1.5.2.10.9.0.0.0 0.h.1.10.1.10.9.0.0.0 0.v.11.0.1.10.9.1.0.10 0.V.2.5.2.11.9.0.0.0 0.h.5.1.2.11.9.1.5.1 0.h.0.11.1.11.10.0.0.0 0.V.1.4.2.11.10.0.0.0 0.h.1.11.1.11.10.0.0.0 0.v.12.0.1.11.10.1.0.11 0.V.2.4.2.12.10.0.0.0 0.h.4.1.2.12.10.1.4.1 0.h.0.12.1.12.11.0.0.0 0.V.1.3.2.12.11.0.0.0 0.h.1.12.1.12.11.0.0.0 0.v.13.0.1.12.11.1.0.12 0.V.2.3.2.13.11.0.0.0 0.h.3.1.2.13.11.1.3.1 0.h.0.13.1.13.12.0.0.0 0.H.2.1.2.13.12.0.0.0 0.h.1.13.1.13.12.0.0.0 0.v.14.0.1.13.12.1.0.13 0.V.1.2.2.14.12.0.0.0 0.v.2.2.2.14.12.1.2.1 0.h.0.14.1.14.13.0.0.0 0.H.2.2.2.14.13.0.0.0 0.h.1.14.1.14.13.0.0.0 0.v.15.0.1.14.13.1.0.14 0.V.3.2.2.15.13.0.0.0 0.h.3.2.2.15.13.1.2.2 0.v.0.1.1.15.14.0.0.0 0.V.3.3.2.15.14.0.0.0 0.h.4.2.2.15.14.1.3.2 0.h.2.0.1.15.15.0.0.0 0.v.1.1.1.15.15.1.1.0 0.V.2.1.2.16.15.0.0.0 0.v.3.1.1.16.15.0.0.0 0.V.3.4.2.16.15.0.0.0 0.h.5.2.2.16.15.1.4.2 0.h.2.3.1.16.16.0.0.0 0.v.4.1.1.16.16.1.1.3 0.V.3.5.2.17.16.0.0.0 0.h.6.2.2.17.16.1.5.2 0.h.2.4.1.17.17.0.0.0 0.v.5.1.1.17.17.1.1.4 0.V.3.6.2.18.17.0.0.0 0.h.7.2.2.18.17.1.6.2 0.h.2.5.1.18.18.0.0.0 0.v.6.1.1.18.18.1.1.5 0.V.3.7.2.19.18.0.0.0 0.h.8.2.2.19.18.1.7.2 0.h.2.6.1.19.19.0.0.0 0.v.7.1.1.19.19.1.1.6 0.V.3.8.2.20.19.0.0.0 0.h.9.2.2.20.19.1.8.2 0.h.2.7.1.20.20.0.0.0 0.v.8.1.1.20.20.1.1.7 0.V.3.9.2.21.20.0.0.0 0.h.10.2.2.21.20.1.9.2 0.h.2.8.1.21.21.0.0.0 0.v.9.1.1.21.21.1.1.8 0.V.3.10.2.22.21.0.0.0 0.h.11.2.2.22.21.1.10.2 0.h.2.9.1.22.22.0.0.0 0.v.10.1.1.22.22.1.1.9 0.V.3.11.2.23.22.0.0.0 0.h.12.2.2.23.22.1.11.2 0.h.2.10.1.23.23.0.0.0 0.v.11.1.1.23.23.1.1.10 0.V.3.12.2.24.23.0.0.0 0.h.13.2.2.24.23.1.12.2 0.h.2.11.1.24.24.0.0.0 0.v.12.1.1.24.24.1.1.11 0.V.3.13.2.25.24.0.0.0 0.h.14.2.2.25.24.1.13.2 0.h.2.12.1.25.25.0.0.0 0.v.13.1.1.25.25.1.1.12 0.V.3.14.2.26.25.0.0.0 0.h.15.2.2.26.25.1.14.2 0.h.2.13.1.26.26.0.0.0 0.v.14.1.1.26.26.1.1.13 0.H.3.3.2.27.26.0.0.0 0.h.2.14.1.27.26.0.0.0 0.v.15.1.1.27.26.1.1.14 0.V.4.2.2.28.26.0.0.0 0.h.2.3.2.28.26.1.2.3 0.v.5.2.1.28.27.0.0.0 0.H.3.4.2.28.27.0.0.0 0.h.3.5.1.28.27.0.0.0 0.v.6.2.1.28.27.1.2.5 0.H.4.3.2.29.27.0.0.0 0.v.4.3.2.29.27.1.3.3 0.h.3.6.1.29.28.0.0.0 0.v.7.2.1.29.28.1.2.6 0.H.4.4.2.30.28.0.0.0 0.v.5.3.2.30.28.1.3.4 0.h.3.7.1.30.29.0.0.0 0.v.8.2.1.30.29.1.2.7 0.H.5.3.2.31.29.0.0.0 0.v.4.4.2.31.29.1.4.3 0.h.3.8.1.31.30.0.0.0 0.v.9.2.1.31.30.1.2.8 0.H.5.4.2.32.30.0.0.0 0.v.5.4.2.32.30.1.4.4 0.h.3.9.1.32.31.0.0.0 0.v.10.2.1.32.31.1.2.9 0.H.6.3.2.33.31.0.0.0 0.v.4.5.2.33.31.1.5.3 0.h.3.10.1.33.32.0.0.0 0.v.11.2.1.33.32.1.2.10 0.H.6.4.2.34.32.0.0.0 0.v.5.5.2.34.32.1.5.4 0.h.3.11.1.34.33.0.0.0 0.v.12.2.1.34.33.1.2.11 0.H.7.3.2.35.33.0.0.0 0.v.4.6.2.35.33.1.6.3 0.h.3.12.1.35.34.0.0.0 0.v.13.2.1.35.34.1.2.12 0.H.7.4.2.36.34.0.0.0 0.v.5.6.2.36.34.1.6.4 0.h.3.13.1.36.35.0.0.0 0.v.14.2.1.36.35.1.2.13 0.H.8.3.2.37.35.0.0.0 0.v.4.7.2.37.35.1.7.3 0.h.3.14.1.37.36.0.0.0 0.v.15.2.1.37.36.1.2.14 0.H.8.4.2.38.36.0.0.0 0.v.5.7.2.38.36.1.7.4 0.v.6.3.1.38.37.0.0.0 0.H.4.5.2.38.37.0.0.0 0.h.4.6.1.38.37.0.0.0 0.v.7.3.1.38.37.1.3.6 0.V.6.4.2.39.37.0.0.0 0.h.5.5.2.39.37.1.4.5 0.h.4.7.1.39.38.0.0.0 0.v.8.3.1.39.38.1.3.7 0.V.6.5.2.40.38.0.0.0 0.h.6.5.2.40.38.1.5.5 0.h.4.8.1.40.39.0.0.0 0.v.9.3.1.40.39.1.3.8 0.V.6.6.2.41.39.0.0.0 0.h.7.5.2.41.39.1.6.5 0.h.4.9.1.41.40.0.0.0 0.v.10.3.1.41.40.1.3.9 0.H.8.5.2.42.40.0.0.0 0.v.6.7.2.42.40.1.7.5 0.h.4.10.1.42.41.0.0.0 0.v.11.3.1.42.41.1.3.10 0.H.9.3.2.43.41.0.0.0 0.v.4.8.2.43.41.1.8.3 0.h.4.11.1.43.42.0.0.0 0.v.12.3.1.43.42.1.3.11 0.H.9.4.2.44.42.0.0.0 0.v.5.8.2.44.42.1.8.4 0.h.4.12.1.44.43.0.0.0 0.v.13.3.1.44.43.1.3.12 0.H.9.5.2.45.43.0.0.0 0.v.6.8.2.45.43.1.8.5 0.h.4.13.1.45.44.0.0.0 0.v.14.3.1.45.44.1.3.13 0.H.10.3.2.46.44.0.0.0 0.v.4.9.2.46.44.1.9.3 0.h.4.14.1.46.45.0.0.0 0.v.15.3.1.46.45.1.3.14 0.H.10.4.2.47.45.0.0.0 0.v.5.9.2.47.45.1.9.4 0.v.7.4.1.47.46.0.0.0 0.H.5.6.2.47.46.0.0.0 0.h.5.7.1.47.46.0.0.0 0.v.8.4.1.47.46.1.4.7 0.H.10.5.2.48.46.0.0.0 0.v.6.9.2.48.46.1.9.5 0.h.5.8.1.48.47.0.0.0 0.v.9.4.1.48.47.1.4.8 0.V.7.5.2.49.47.0.0.0 0.h.6.6.2.49.47.1.5.6 0.h.5.9.1.49.48.0.0.0 0.v.10.4.1.49.48.1.4.9 0.V.7.6.2.50.48.0.0.0 0.h.7.6.2.50.48.1.6.6 0.h.5.10.1.50.49.0.0.0 0.v.11.4.1.50.49.1.4.10 0.V.7.7.2.51.49.0.0.0 0.h.8.6.2.51.49.1.7.6 0.h.5.11.1.51.50.0.0.0 0.v.12.4.1.51.50.1.4.11 0.V.7.8.2.52.50.0.0.0 0.h.9.6.2.52.50.1.8.6 0.h.5.12.1.52.51.0.0.0 0.v.13.4.1.52.51.1.4.12 0.H.10.6.2.53.51.0.0.0 0.v.7.9.2.53.51.1.9.6 0.h.5.13.1.53.52.0.0.0 0.v.14.4.1.53.52.1.4.13 0.H.11.3.2.54.52.0.0.0 0.v.4.10.2.54.52.1.10.3 0.h.5.14.1.54.53.0.0.0 0.v.15.4.1.54.53.1.4.14 0.H.11.4.2.55.53.0.0.0 0.v.5.10.2.55.53.1.10.4 0.v.8.5.1.55.54.0.0.0 0.H.6.7.2.55.54.0.0.0 0.h.6.8.1.55.54.0.0.0 0.v.9.5.1.55.54.1.5.8 0.H.11.5.2.56.54.0.0.0 0.v.6.10.2.56.54.1.10.5 0.h.6.9.1.56.55.0.0.0 0.v.10.5.1.56.55.1.5.9 0.H.11.6.2.57.55.0.0.0 0.v.7.10.2.57.55.1.10.6 0.h.6.10.1.57.56.0.0.0 0.v.11.5.1.57.56.1.5.10 0.V.8.6.2.58.56.0.0.0 0.h.7.7.2.58.56.1.6.7 0.h.6.11.1.58.57.0.0.0 0.v.12.5.1.58.57.1.5.11 0.V.8.7.2.59.57.0.0.0 0.h.8.7.2.59.57.1.7.7 0.h.6.12.1.59.58.0.0.0 0.v.13.5.1.59.58.1.5.12 0.V.8.8.2.60.58.0.0.0 0.h.9.7.2.60.58.1.8.7 0.h.6.13.1.60.59.0.0.0 0.v.14.5.1.60.59.1.5.13 0.V.8.9.2.61.59.0.0.0 0.h.10.7.2.61.59.1.9.7 0.h.6.14.1.61.60.0.0.0 0.v.15.5.1.61.60.1.5.14 0.H.11.7.2.62.60.0.0.0 0.v.8.10.2.62.60.1.10.7 0.v.9.6.1.62.61.0.0.0 0.H.7.8.2.62.61.0.0.0 0.h.7.9.1.62.61.0.0.0 0.v.10.6.1.62.61.1.6.9 0.V.9.7.2.63.61.0.0.0 0.h.8.8.2.63.61.1.7.8 0.h.7.10.1.63.62.0.0.0 0.v.11.6.1.63.62.1.6.10 0.V.9.8.2.64.62.0.0.0 0.h.9.8.2.64.62.1.8.8 0.h.7.11.1.64.63.0.0.0 0.v.12.6.1.64.63.1.6.11 0.V.9.9.2.65.63.0.0.0 0.h.10.8.2.65.63.1.9.8 0.h.7.12.1.65.64.0.0.0 0.v.13.6.1.65.64.1.6.12 0.H.11.8.2.66.64.0.0.0 0.v.9.10.2.66.64.1.10.8 0.h.7.13.1.66.65.0.0.0 0.v.14.6.1.66.65.1.6.13 0.H.12.3.2.67.65.0.0.0 0.v.4.11.2.67.65.1.11.3 0.h.7.14.1.67.66.0.0.0 0.v.15.6.1.67.66.1.6.14 0.H.12.4.2.68.66.0.0.0 0.v.5.11.2.68.66.1.11.4 0.v.10.7.1.68.67.0.0.0 0.H.8.9.2.68.67.0.0.0 0.h.8.10.1.68.67.0.0.0 0.v.11.7.1.68.67.1.7.10 0.H.12.5.2.69.67.0.0.0 0.v.6.11.2.69.67.1.11.5 0.h.8.11.1.69.68.0.0.0 0.v.12.7.1.69.68.1.7.11 0.H.12.6.2.70.68.0.0.0 0.v.7.11.2.70.68.1.11.6 0.h.8.12.1.70.69.0.0.0 0.v.13.7.1.70.69.1.7.12 0.H.12.7.2.71.69.0.0.0 0.v.8.11.2.71.69.1.11.7 0.h.8.13.1.71.70.0.0.0 0.v.14.7.1.71.70.1.7.13 0.H.12.8.2.72.70.0.0.0 0.v.9.11.2.72.70.1.11.8 0.h.8.14.1.72.71.0.0.0 0.v.15.7.1.72.71.1.7.14 0.V.10.8.2.73.71.0.0.0 0.h.9.9.2.73.71.1.8.9 0.v.11.8.1.73.72.0.0.0 0.H.9.10.2.73.72.0.0.0 0.h.9.11.1.73.72.0.0.0 0.v.12.8.1.73.72.1.8.11 0.H.13.3.2.74.72.0.0.0 0.v.4.12.2.74.72.1.12.3 0.h.9.12.1.74.73.0.0.0 0.v.13.8.1.74.73.1.8.12 0.H.13.4.2.75.73.0.0.0 0.v.5.12.2.75.73.1.12.4 0.h.9.13.1.75.74.0.0.0 0.v.14.8.1.75.74.1.8.13 0.H.13.5.2.76.74.0.0.0 0.v.6.12.2.76.74.1.12.5 0.h.9.14.1.76.75.0.0.0 0.v.15.8.1.76.75.1.8.14 0.H.13.6.2.77.75.0.0.0 0.v.7.12.2.77.75.1.12.6 0.v.11.9.1.77.76.0.0.0 0.H.13.7.2.77.76.0.0.0 0.v.8.12.2.77.76.1.12.7 0.h.10.11.1.77.77.0.0.0 0.v.12.9.1.77.77.1.9.11 0.H.13.8.2.78.77.0.0.0 0.v.9.12.2.78.77.1.12.8 0.h.10.12.1.78.78.0.0.0 0.v.13.9.1.78.78.1.9.12 0.V.10.9.2.79.78.0.0.0 0.h.10.9.2.79.78.1.9.9 0.h.10.13.1.79.79.0.0.0 0.v.14.9.1.79.79.1.9.13 0.H.10.10.2.80.79.0.0.0 0.v.11.9.2.80.79.1.9.10 0.h.10.14.1.80.80.0.0.0 0.v.15.9.1.80.80.1.9.14 0.H.11.9.2.81.80.0.0.0 0.v.10.10.2.81.80.1.10.9 0.v.11.10.1.81.81.0.0.0 0.H.11.10.2.81.81.0.0.0 0.v.11.10.2.81.81.1.10.10 0.v.12.10.1.81.82.0.0.0 0.H.11.11.2.81.82.0.0.0 0.h.11.12.1.81.82.0.0.0 0.v.13.10.1.81.82.1.10.12 0.H.12.9.2.82.82.0.0.0 0.v.10.11.2.82.82.1.11.9 0.h.11.13.1.82.83.0.0.0 0.v.14.10.1.82.83.1.10.13 0.V.10.12.2.83.83.0.0.0 0.h.13.9.2.83.83.1.12.9 0.h.11.14.1.83.84.0.0.0 0.v.15.10.1.83.84.1.10.14 0.H.14.3.2.84.84.0.0.0 0.v.4.13.2.84.84.1.13.3 0.v.12.11.1.84.85.0.0.0 0.H.14.4.2.84.85.0.0.0 0.v.5.13.2.84.85.1.13.4 0.h.12.12.1.84.86.0.0.0 0.v.13.11.1.84.86.1.11.12 0.H.14.5.2.85.86.0.0.0 0.v.6.13.2.85.86.1.13.5 0.h.12.13.1.85.87.0.0.0 0.v.14.11.1.85.87.1.11.13 0.H.14.6.2.86.87.0.0.0 0.v.7.13.2.86.87.1.13.6 0.h.12.14.1.86.88.0.0.0 0.v.15.11.1.86.88.1.11.14 0.H.14.7.2.87.88.0.0.0 0.v.8.13.2.87.88.1.13.7 0.v.12.12.1.87.89.0.0.0 0.V.11.11.2.87.89.0.0.0 0.h.12.10.2.87.89.1.11.10 0.h.13.12.1.87.90.0.0.0 0.v.13.12.1.87.90.1.12.12 0.H.12.11.2.88.90.0.0.0 0.v.12.11.2.88.90.1.11.11 0.h.13.13.1.88.91.0.0.0 0.v.14.12.1.88.91.1.12.13 0.H.13.10.2.89.91.0.0.0 0.v.11.12.2.89.91.1.12.10 0.h.13.14.1.89.92.0.0.0 0.v.15.12.1.89.92.1.12.14 0.H.13.11.2.90.92.0.0.0 0.v.12.12.2.90.92.1.12.11 0.v.12.13.1.90.93.0.0.0 0.H.14.8.2.90.93.0.0.0 0.v.9.13.2.90.93.1.13.8 0.h.14.12.1.90.94.0.0.0 0.v.13.13.1.90.94.1.13.12 0.H.14.9.2.91.94.0.0.0 0.v.10.13.2.91.94.1.13.9 0.h.14.13.1.91.95.0.0.0 0.v.14.13.1.91.95.1.13.13 0.H.14.10.2.92.95.0.0.0 0.v.11.13.2.92.95.1.13.10 0.h.14.14.1.92.96.0.0.0 0.v.15.13.1.92.96.1.13.14 0.H.14.11.2.93.96.0.0.0 0.v.12.13.2.93.96.1.13.11 0.v.12.14.1.93.97.0.0.0 0.V.4.14.2.93.97.0.0.0 0.h.15.3.2.93.97.1.14.3 0.h.15.12.1.93.98.0.0.0 0.v.13.14.1.93.98.1.14.12 0.H.15.13.2.94.98.0.0.0 0.v.0.2.1.94.98.0.0.0 0.H.3.0.2.94.98.0.0.0 0.v.11.14.1.94.98.0.0.0 0.H.15.11.2.94.98.0.0.0 0.v.10.14.1.94.98.0.0.0 0.H.15.10.2.94.98.0.0.0 0.v.9.14.1.94.98.0.0.0 0.H.15.9.2.94.98.0.0.0 0.v.8.14.1.94.98.0.0.0 0.H.15.8.2.94.98.0.0.0 0.v.7.14.1.94.98.0.0.0 0.H.15.7.2.94.98.0.0.0 0.v.6.14.1.94.98.0.0.0 0.H.15.6.2.94.98.0.0.0 0.v.5.14.1.94.98.0.0.0 0.H.15.4.2.94.98.0.0.0 0.v.5.14.2.94.98.1.14.4 0.h.15.14.1.94.99.0.0.0 0.H.15.5.2.94.99.0.0.0 0.v.6.14.2.94.99.1.14.5 0.v.7.14.2.94.99.1.14.6 0.v.8.14.2.94.99.1.14.7 0.v.9.14.2.94.99.1.14.8 0.v.10.14.2.94.99.1.14.9 0.v.11.14.2.94.99.1.14.10 0.v.12.14.2.94.99.1.14.11 0.v.15.14.1.94.106.0.0.0 0.v.14.14.1.94.106.1.14.14 0.h.15.13.1.94.106.1.14.13 0.H.4.0.2.96.106.0.0.0 0.v.0.3.2.96.106.1.3.0 0.v.0.4.1.96.107.0.0.0 0.H.5.0.2.96.107.0.0.0 0.v.0.4.2.96.107.1.4.0 0.v.0.5.1.96.108.0.0.0 0.H.6.0.2.96.108.0.0.0 0.v.0.5.2.96.108.1.5.0 0.v.0.6.1.96.109.0.0.0 0.H.7.0.2.96.109.0.0.0 0.v.0.6.2.96.109.1.6.0 0.v.0.7.1.96.110.0.0.0 0.H.8.0.2.96.110.0.0.0 0.v.0.7.2.96.110.1.7.0 0.v.0.8.1.96.111.0.0.0 0.H.9.0.2.96.111.0.0.0 0.v.0.8.2.96.111.1.8.0 0.v.0.9.1.96.112.0.0.0 0.H.10.0.2.96.112.0.0.0 0.v.0.9.2.96.112.1.9.0 0.v.0.10.1.96.113.0.0.0 0.H.11.0.2.96.113.0.0.0 0.v.0.10.2.96.113.1.10.0 0.v.0.11.1.96.114.0.0.0 0.H.12.0.2.96.114.0.0.0 0.v.0.11.2.96.114.1.11.0 0.v.0.12.1.96.115.0.0.0 0.H.13.0.2.96.115.0.0.0 0.v.0.12.2.96.115.1.12.0 0.v.0.13.1.96.116.0.0.0 0.H.14.0.2.96.116.0.0.0 0.v.0.13.2.96.116.1.13.0 0.v.0.14.1.96.117.0.0.0 0.H.15.0.2.96.117.0.0.0 0.v.0.14.2.96.117.1.14.0 5.H.15.0.2.96.118.2.0.0</div>
+      <div class="hide-on-large-only"><h2>PLEASE VIEW IN DESKTOP MODE</h2></div>
+
+<div class="hide-on-med-and-down">
+  <nav class="blue-grey lighten-5">
+    <div class="nav-wrapper row "  style="margin-left:5%;" >
+    <form method="POST" action="">
+      <div class="col m2 l2" style="margin-top:1%;">
+        <a href="." ><img src="/static/images/xodialogo.png" style="width:100px;height:50px;"></img></a>
+      </div>
+       
+      <div class="col m2 l2">
+        <select name="player1">
+          
+          <option  selected value="BotBM">BotBM</option>          
+          
+          <option  value="ChorPolice">ChorPolice</option>          
+          
+          <option  value="TheGamer">TheGamer</option>          
+          
+          <option  value="tingu">tingu</option>          
+          
+          <option  value="SOLEIL">SOLEIL</option>          
+          
+          <option  value="Gaurang">Gaurang</option>          
+          
+          <option  value="drone">drone</option>          
+          
+          <option  value="bruteforce">bruteforce</option>          
+          
+          <option  value="maggi">maggi</option>          
+          
+          <option  value="pintya">pintya</option>          
+          
+          <option  value="super_random">super_random</option>          
+          
+          <option  value="pathfinder">pathfinder</option>          
+          
+          <option  value="bot4Life">bot4Life</option>          
+          
+          <option  value="BlueGene">BlueGene</option>          
+
+        </select> 
+      </div>
+       
+         <div class="col m2 l2 ">
+         <select name="player2">
+          
+          <option selected value="BotBM">BotBM</option>          
+          
+          <option  value="ChorPolice">ChorPolice</option>          
+          
+          <option  value="TheGamer">TheGamer</option>          
+          
+          <option  value="tingu">tingu</option>          
+          
+          <option  value="SOLEIL">SOLEIL</option>          
+          
+          <option  value="Gaurang">Gaurang</option>          
+          
+          <option  value="drone">drone</option>          
+          
+          <option  value="bruteforce">bruteforce</option>          
+          
+          <option  value="maggi">maggi</option>          
+          
+          <option  value="pintya">pintya</option>          
+          
+          <option  value="super_random">super_random</option>          
+          
+          <option  value="pathfinder">pathfinder</option>          
+          
+          <option  value="bot4Life">bot4Life</option>          
+          
+          <option  value="BlueGene">BlueGene</option>          
+
+          </select> 
+        </div>
+
+         <div class="col m3 l3 valign-wrapper">
+        <button value=" " style="margin-top:6%;" class="btn waves-effect waves-light valign center-align" onclick="replay()">GET MATCH</button>
+        </div>
+        
+
+        <div class="col m3 l3">
+        <a style="margin-top:6%;" href="leaderboard" class="btn waves-effect waves-light valign center-align">Leaderboard</a>
+        </div>
+
+        </form>
+
+        </div>
+  </nav>
+      
+    <div class="top teal darken-3 " >
+      <div class=" card_overlay" >
+              
+      <div class="row" >
+
+        <div class="col offset-m1 offset-l1 m10 l10" >
+         <div class="card-panel row blue-grey lighten-5"  id="canvaas"  >
+      <!--     <div id="banner">
+            <img src="/static/images/xodialogo.png"></img>
+          </div> -->
+          
+         <div id ="cardinner">
+          
+          <div class="col m2 l2" >
+          <h4>SCORE</h4>
+          <!--  -->
+          <h5 style="color: red;" id="p1">tingu : 0</h5>
+          <h5 style="color: #03A9F4;" id="p2">TheGamer : 0</h5>
+          <!--   -->
+          <H5>GAME STATUS</H5>
+          <textarea id="gamestatus" readonly="readonly" class="materialize-textarea"></textarea>
+          <h5>LOG</h5>
+          <textarea id="logdisplay" readonly="readonly" class="materialize-textarea"></textarea>
+          </div>
+
+              <div class="col m5 l5 s12 " >
+              <canvas id="mycanvas" style="margin-top:-5%;" ></canvas>
+              </div>
+
+              <div class="col m3 l3 s12 offset-m1 offset-l1 " style="margin-left:10%;">
+                
+                <br>
+              <button class="waves-effect waves-light btn"  onclick="replay()">
+                <div style="relative">
+                  <i class="mdi-av-play-circle-fill" style="font-size:100%">START</i>
+
+                  /
+                  <i class="mdi-navigation-refresh" style="font-size:100%">REPLAY</i>
+              </button> 
+                <button class="waves-effect waves-light btn" id ="myBtn" value="Pause" onclick="interrupt()"><i class="mdi-av-play-arrow">|</i><i class="mdi-av-pause"></i></button><br>
+                <div class="range-field"><i class="fa fa-star prefix"></i> <label>Game Speed</label><br><label for="speed">FAST-----------------MEDIUM---------------------SLOW</label>
+                <input type="range" id="slider" onclick="speedChange()" name="GameSpeed" min="0" max="1000" required /></div>
+                <button class="waves-effect waves-light btn" onclick="prevmove()"><i class="mdi-av-skip-previous"></i></button>
+              <button class="waves-effect waves-light btn" onclick="nextmove()"><i class="mdi-av-skip-next"></i></button>
+              </div>
+
+            </div>
+          </div>
+          </div>
+        </div>
+           </div>
+  </div>
+
+
+  <footer class="page-footer teal">
+          <div class="container">
+              <div class="center-align">
+                <div class="col l4 offset-l4 offset-m4 m4 ">                            
+                 <a class="btn-floating hvr-wobble-horizontal waves-effect white   " style="margin-right:10px;" href="https://www.facebook.com/pages/XOdia/621906491246926" target="_blank"><i class=" fa fa-facebook" style="font-size:150%;color:black; "></i></a>
+                  <a class=" btn-floating hvr-wobble-horizontal waves-effect white " style="margin-right:10px;" href="http://www.instagram.com/pisbcredenz" target="_blank"><i class=" fa fa-instagram" style="font-size:150%;color:black; "></i></a>
+                  <a class=" btn-floating hvr-wobble-horizontal waves-effect white " style="margin-right:10px;" href="http://www.twitter.com/xodia_" target="_blank"><i class=" fa fa-twitter" style="font-size:150%;color:black; "></i></a>
+              </div>
+              </div>
+            </div>
+          
+          <div class="footer-copyright">
+            <div class="container">
+               <p style="text-align:center">Copyright © PICT IEEE Student Branch, 2015 </p>    
+            </div>
+          </div>
+          
+
+        </footer>
+      <!--Import  jQuery before materialize.js-->
+    
+      <script type="text/javascript" src="/static/js/jquery-2.1.3.min.js"></script>
+      <script type="text/javascript" src="/static/js/materialize.min.js"></script>
+      <script type ="text/javascript" src="/static/js/sweet-alert.min.js"></script>
+      <script type ="text/javascript" src="/static/js/alertify.js"></script>
+<script>
+
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+
+  var l = 0;
+  if(l){
+    alertify.log("SELECT DIFFERENT PLAYERS");
+  }
+
+
+ {
+      
+        var flag=0;
+        var xchange = 30;
+        var ychange = 30;     
+        var Canvas = function(canvasEl,width,height){
+            this.el = canvasEl;
+            this.el.width = width;
+            this.el.height = height;
+            this.ctx = canvasEl.getContext("2d");           
+          }
+        var canvas = new Canvas(document.querySelector("#mycanvas"),580,580);
+
+        function drawpoints(){
+        var i = 50;
+        var j = 50;
+        for(i=50;i<530;i+=xchange)
+        {             
+            for(j=50;j<530;j+=ychange)
+            { 
+              canvas.ctx.lineWidth = 3;
+              canvas.ctx.strokeStyle = "#222222";
+              canvas.ctx.strokeRect(i,j,1,1);               
+            }
+        }     
+  }
+      }              
+      var check = document.getElementById("log").textContent;
+      myData = check.split(" ");
+    var length = myData.length;
+    
+    var loop = 0;
+    var gamespeed = document.getElementById("slider").value;
+    function speedChange(){  
+      clearInterval(window.invalid);      
+      gamespeed = document.getElementById("slider").value;
+      toast("game speed changed to "+gamespeed,2000);            
+      
+      if(document.getElementById("gamestatus").value!="Game is Paused!" && document.getElementById("gamestatus").value!="Game is About to begin!" && document.getElementById("gamestatus").value!="Game Over!\nClick 'Start/Replay' to Replay"){
+        setInterval(gameplay(),gamespeed);
+        document.getElementById("gamestatus").value="Game has begun!";  
+      }
+
+    } 
+      
+
+    
+      
+      function init(){
+            {
+
+              drawpoints();
+              var str = myData[loop];
+              str = str.split(".");           
+              var string = (str[1]+"."+str[2]+"."+str[3]);
+            //var string = str[1]+"."str[2]+"."+str[3];
+            var error = parseInt(str[0]);
+            var player = parseInt(str[4]);
+            var player_1_score = str[5];
+            var player_2_score = str[6];
+            var flagbox=parseInt(str[7]);
+            var boxx=parseInt(str[8]);
+            var boxy=parseInt(str[9]);
+            
+            if(error==0)//no error in the bot hence continue the rendering
+              {
+                
+                var orientation = string[0];
+                var point = parseInt(str[2]);
+                var line = parseInt(str[3]);
+                
+                if(orientation=='h' || orientation=='H')
+                  {
+                    
+                    var x1 = 50+(line*xchange);             
+                    var y1 = 50+(point*ychange);
+                    var x2 = x1+xchange;
+                    var y2 = y1;
+                    clearline(x1,y1,x2,y2);
+                    drawline(x1,y1,x2,y2,player);
+                    drawpoints();                    
+                  }
+                else
+                  {             
+                    
+                    var x1 = 50+(point*xchange);              
+                    var y1 = 50+(line*ychange);
+                    var x2 = x1;
+                    var y2 = y1+ychange;
+                    clearline(x1,y1,x2,y2);
+                    drawline(x1,y1,x2,y2,player);
+                    drawpoints();                   
+                    //get x1,y1,x2,y2 call drawline
+                    //find if box is to be printed using checkbox if yes then print
+                  }
+                  if(flagbox==1){
+                    clearbox(boxy,boxx);
+                    drawbox(boxy,boxx,player);
+                    drawpoints();
+                    scoreupdate(player_1_score,player_2_score);
+                  }
+                //get the string render the line and scores
+                var toshow = "Bot "+player+" played the move "+str[1]+"."+str[2]+"."+str[3]; 
+                loggenrator(toshow);                
+                loop+=1;                
+              }
+            else
+              {  
+                
+                var temp = myData[loop].split(".");
+                console.log(temp);
+                scoreupdate(temp[5],temp[6]);
+                if(parseInt(player)==1)
+                {
+                  var winnerr = "tingu";
+                  var loser = "TheGamer";
+                }else{
+                 var winnerr = "TheGamer";
+                 var loser =  "tingu";
+                }
+
+                if(parseInt(temp[5])>parseInt(temp[6]))
+                {
+                  var winnerr = "tingu"; //here should be player 1 ka variable
+                  var loser = "TheGamer"; ////here should be player 2 ka variable
+                }else{
+                 var winnerr = "TheGamer"; //here should be player 2 ka variable
+                 var loser =  "tingu"; //here should be player 1 ka variable
+                }               
+                                if(error==1){
+                  swal("Bot "+winnerr+ " is declared winner", "Bot " + loser + " did not compile successfully","warning");                 
+                }
+                if(error==2){
+                  swal("Bot "+winnerr+" is declared winner","Bot " + loser + " did not respond in time","warning");                                      
+                }
+                if(error==3){
+                  swal("Bot "+winnerr+" is declared winner","Bot " + loser+" tried some nasty methods to override our systems hence is disqualified","warning");                                      
+                }
+                if(error==4){
+                  swal("Bot "+winnerr +" is declared winner","Bot "+ loser+" returned invalid","warning");                     
+                }               
+                if(error==5){
+
+                   if(player_1_score == player_2_score){
+                    swal("Game is over", "the game ended in a TIE" , "warning");
+                   }
+
+                else
+                  {           
+                    swal("Game is over", "the winner is Bot "+winnerr,"success");
+                  }
+                  window.flag=0;                    
+                }
+                loop=length;
+                document.getElementById("gamestatus").value="Game Over!\nClick 'Start/Replay' to Replay";
+              }
+          }             
+      
+
+      }   
+
+      function gameplay(){
+
+        gamespeed = document.getElementById("slider").value;
+        var status = 1;
+        window.flag=status;
+      var stop = setInterval(function (){
+        window.invalid = stop;
+        
+        if(loop<length){
+        init(); 
+      }
+        else
+          {
+          clearInterval(stop);
+          window.flag = 2;          
+          }
+        
+      }, gamespeed);
+
+
+    }
+
+    function scoreupdate(player_1_score,player_2_score){
+        document.getElementById("p1").innerHTML="tingu : "+player_1_score;
+        document.getElementById("p2").innerHTML="TheGamer : "+player_2_score;
+
+      }
+
+    function clearline(x1,y1,x2,y2){
+      canvas.ctx.beginPath();
+      canvas.ctx.lineWidth = 4;
+      canvas.ctx.moveTo(x1,y1);
+      canvas.ctx.lineTo(x2,y2);      
+      canvas.ctx.strokeStyle = '#eeeeee';      
+      canvas.ctx.stroke();
+      canvas.ctx.closePath();
+    }     
+      
+    function drawline(x1,y1,x2,y2,player){
+      canvas.ctx.beginPath();
+      canvas.ctx.lineWidth = 3;
+      canvas.ctx.moveTo(x1,y1);
+      canvas.ctx.lineTo(x2,y2);
+      if(player==1){
+        canvas.ctx.strokeStyle = '#E01E63';
+      }
+      else{
+        canvas.ctx.strokeStyle = '#03A9F4';
+      }
+      canvas.ctx.stroke();
+      canvas.ctx.closePath();
+    }
+
+      function drawbox(x1,y1,player){
+        canvas.ctx.beginPath();
+      canvas.ctx.moveTo(x1,y1);
+      if(player==1){
+        
+        canvas.ctx.fillStyle="#ff8a80";
+          canvas.ctx.fillRect(x1*30+52,y1*30+52,26,26);
+      }
+      else{
+        
+        canvas.ctx.fillStyle="#81f4f8";
+          canvas.ctx.fillRect(x1*30+52,y1*30+52,26,26);        
+        }    
+        
+     }
+     function clearbox(x1,y1){
+      canvas.ctx.beginPath();
+      canvas.ctx.moveTo(x1,y1);       
+      canvas.ctx.fillStyle="#eeeeee";
+      canvas.ctx.fillRect(x1*30+52,y1*30+52,26,26);
+      canvas.ctx.closePath();        
+     }
+
+
+      function interrupt(){
+        if(document.getElementById("gamestatus").value=="Game is About to begin!"){
+          toast("Click on 'Start/Replay' to start the game",2000);
+        }
+        else{
+        gamespeed = document.getElementById("slider").value;
+        var btn = document.querySelector("#myBtn");
+        if(btn.value == "Pause"){
+          
+          document.getElementById("myBtn").value = "Resume";          
+          clearInterval(window.invalid);
+          alertify.log("Game is Paused",1000);
+          document.getElementById("gamestatus").value="Game is Paused!"; 
+
+        }
+        else
+          {
+            document.getElementById("myBtn").value = "Pause";
+            document.getElementById("gamestatus").value="Game is resumed!";
+            alertify.log("Game is Resumed",1000);
+            setInterval(gameplay(),gamespeed);      
+          }
+        }
+      }
+
+      function prevmove(){
+        console.log(loop);
+      if(loop==0){
+        swal("Game didn't start yet","Previous move not available","error");
+      }
+      else{
+        if(document.getElementById("myBtn").value == "Pause"){
+          interrupt(); 
+        }
+        if(loop==myData.length){
+          loop-=1;
+        }      
+          document.getElementById("myBtn").value == "Resume"
+          clearInterval(window.invalid);          
+          var str = myData[loop];          
+          str = str.split(".");           
+          var string = (str[1]+"."+str[2]+"."+str[3]);
+          var error = parseInt(str[0]);
+          var player = parseInt(str[4]);
+          var player_1_score = str[5];
+          var player_2_score = str[6];
+          var flagbox=parseInt(str[7]);
+          var boxx=parseInt(str[8]);
+          var boxy=parseInt(str[9]);
+          if(error==0)//no error in the bot hence continue the rendering
+              {                
+                var orientation = string[0];
+                var point = parseInt(str[2]);
+                var line = parseInt(str[3]);
+                
+                if(orientation=='h' || orientation=='H')
+                  {
+                    
+                    var x1 = 50+(line*xchange);             
+                    var y1 = 50+(point*ychange);
+                    var x2 = x1+xchange;
+                    var y2 = y1;
+                    clearline(x1,y1,x2,y2);
+                    drawpoints();
+                  }
+                else
+                  {             
+                    
+                    var x1 = 50+(point*xchange);              
+                    var y1 = 50+(line*ychange);
+                    var x2 = x1;
+                    var y2 = y1+ychange;
+                    clearline(x1,y1,x2,y2);                                                           
+                    drawpoints();
+                  }
+                  if(flagbox==1){
+                    clearbox(boxy,boxx);
+                    drawpoints();
+                    scoreupdate(player_1_score,player_2_score);
+                  }
+                //get the string render the line and scores
+                var toshow = "Bot "+player+" played the move "+str[1]+"."+str[2]+"."+str[3]; 
+                loggenrator(toshow);                                                
+              }
+            loop-=1;
+          }
+        }      
+  function nextmove(){
+    if(loop==myData.length){
+      swal("Game is over","Next move not available","error");
+    }
+    else{
+
+      if(document.getElementById("myBtn").value == "Pause"){
+          interrupt(); 
+        }        
+        clearInterval(window.invalid);
+        init();
+      }
+    }
+      
+      function replay(){
+        if(window.flag == 0){
+        gameplay();
+        alertify.log("Let the Games Begin!",1000);
+        document.getElementById("gamestatus").value="Game has begun!";  
+        }
+        else if(window.flag == 2){
+          location.reload();
+          }
+        else{
+          toast("Game already Running",1000);
+          toast("Click on Play/Pause to pause or play",3000);
+        }
+      }
+    
+      function loggenrator(move){     
+      document.getElementById("logdisplay").value=move;
+      document.getElementById("logdisplay").scrollTop = document.getElementById("log").scrollHeight;
+}
+
+      
+      document.getElementById("gamestatus").value="Game is About to begin!"; 
+      document.getElementById("logdisplay").value="";
+      drawpoints();
+
+
+
+/*  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60339311-1', 'auto');
+  ga('send', 'pageview');*/
+
+/* TEAM XODIA*/
+
+
+</script>
+    
+  </div>
+  
+</body>
+</html>
+
+

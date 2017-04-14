@@ -1,0 +1,21 @@
+{% extends 'xodia/test.html' %}
+
+{% block loadgame %}
+<div class="card darken-1" style="z-index:1;color:teal;">
+<div class="card-content">
+                <span class="card-title" style="color:teal;"><b>Get match</b></span>
+
+              </div>
+              <div class="card-action">
+
+<form action="{% url 'xodia:getgame' %}" method="post">
+{% csrf_token %}
+   <input class="with-gap" name="game" required type="radio" id="game1" value="game1" />
+   <label for="game1">Test1 vs std</label>
+   <input class="btn btn-flat" type="submit" onclick="getgame()" style="color:teal;font-style:italic;" value="Submit" >
+</form>
+{% csrf_token %}
+ </div>
+     </div>
+
+{% endblock loadgame %}

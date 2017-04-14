@@ -1,0 +1,39 @@
+{% load staticfiles %}
+
+<h1>Welcome to your personal homepage {{user.first_name}}</h1>
+
+<img src = "{% static path %}"  height="100em" width="100em" />
+<img src="{% static 'xodia/apple-icon-57x57.png' %}">
+<br/>
+
+
+{{user.userdata.submitted}}
+
+{% block codeinput %}
+You can submit your code below
+<form name="codebox" id="codebox">
+{% csrf_token %}
+<textarea name="code" id="code" rows="1000" cols="100" style ="max-height : 250px ; min-height : 250px resize : none"> </textarea><br/>
+<select name="lang">
+	<option value="c">c</option>
+	<option value="cpp">cpp</option>
+	<option value="java">Java</option>
+	<option value="python">Python 2.7</option>
+	<option value="python3">Python 3</option>
+</select>
+</form>
+
+{% csrf_token %}
+<button type="submit" name="action" value="Test" form="codebox" formaction="{% url 'xodia:test' %}" formmethod="post"> Test </button> 
+
+{% csrf_token %}
+<button type="submit" name="submit" value="Submit" form="codebox" formaction="{% url 'xodia:submit' %}" formmethod= "post" > Submit </button> 
+
+{% csrf_token %}
+
+<br/> <br/> <br/> <br/>
+
+{% endblock codeinput %}
+
+
+<a href = "{% url 'xodia:logout' %}" >Log Out </a>
