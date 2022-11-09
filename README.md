@@ -2,7 +2,7 @@
 
 XOdia is an online Artificial Intelligence based Gaming Competition in which codes are pitted against each other in a unique game designed for two players. We, the XOdia team, design algorithmically challenging games to provide programmers an opportunity to test their programming skills, thinking strategy, and coding efficiency. Our aim is to share our love for machine intelligence, and to provide practical opportunities for developers to immerse in the exciting field of artificial intelligence.
 
-I led the XOdia team for the period 2016-2017. My work involved designing games, programming the online judge, sandbox and web application, coordinating the work of the team, and hosting the competition online.
+I co-led the XOdia team for the period 2016-2017. My work involved designing games, programming the online judge, sandbox and web application, coordinating the work of the team, and hosting the competition online.
 
 Our team has consistently received active participation from students and developers across the globe. We hope to carry forward this initiative, and to showcase XOdia to a much wider audience.
 
